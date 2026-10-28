@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "6aaa3a8e0be2eb10f8503143",
+    "userId": "6aaa3a8cc3fb9387661964f1",
+    "transactionId": "DR_1789541006067_2AF1A79470",
+    "type": "DEBIT",
+    "category": "PAYOUT",
+    "amount": 1000,
+    "balanceAfter": 4000,
+    "status": "SUCCESS",
+    "referenceId": "6aaa3a8d0be2eb10f850313e",
+    "referenceType": "Payout",
+    "description": "Payout amount reserved",
+    "metadata": {
+      "beneficiary_name": "Iso Test",
+      "account_number_last4": "1212",
+      "ifsc_code": "HDFC0001234"
+    },
+    "createdBy": "6aaa3a8cc3fb9387661964f1",
+    "createdAt": "2026-09-16T06:43:26.068Z",
+    "updatedAt": "2026-09-16T06:43:26.520Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aab94e42cdf75621e94233f",
+    "userId": "6a7d5f6051ac639b85e5ebbd",
+    "transactionId": "CR_1789629668771_B3A0E35D3A",
+    "type": "CREDIT",
+    "category": "FUNDING",
+    "amount": 500,
+    "balanceAfter": 40500,
+    "status": "SUCCESS",
+    "referenceId": "6aab94982cdf75621e94230e",
+    "referenceType": "FundRequest",
+    "description": "Wallet funding approved - UTR testing UTR",
+    "metadata": {
+      "utr": "testing UTR",
+      "remarks": "payment has completed"
+    },
+    "createdBy": "6aaa6d8a07f6d0743c3234ba",
+    "createdAt": "2026-09-17T07:21:08.772Z",
+    "updatedAt": "2026-09-17T07:21:08.772Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aabb918bf5ac04931ca3f6a",
+    "userId": "6aaa6d8a07f6d0743c3234ba",
+    "transactionId": "CR_1789638936225_C93BF85DA2",
+    "type": "CREDIT",
+    "category": "FUNDING",
+    "amount": 500,
+    "balanceAfter": 500,
+    "status": "SUCCESS",
+    "referenceId": "6aabb777bf5ac04931ca3f06",
+    "referenceType": "FundRequest",
+    "description": "Wallet funding approved - UTR testing utr",
+    "metadata": {
+      "utr": "testing utr",
+      "remarks": "testing"
+    },
+    "createdBy": "6aaa6d8a07f6d0743c3234ba",
+    "createdAt": "2026-09-17T09:55:36.226Z",
+    "updatedAt": "2026-09-17T09:55:36.226Z",
+    "__v": 0
+  }
+]

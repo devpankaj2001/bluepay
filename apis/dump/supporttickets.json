@@ -1,0 +1,55 @@
+[
+  {
+    "_id": "6aa69a932e4f088fe7ecc4c8",
+    "userId": "6aa696df1b065edb357e5ecc",
+    "subject": "Account Unlock Request: user@bluepay.com",
+    "category": "Other",
+    "description": "Please unlock my account",
+    "attachment": "",
+    "status": "open",
+    "priority": "high",
+    "replies": [],
+    "createdAt": "2026-09-13T12:44:03.785Z",
+    "updatedAt": "2026-09-13T12:44:03.785Z",
+    "ticketId": "BP-TKT-0001",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6c5542e4f088fe7ecc4ec",
+    "userId": "6aa696df1b065edb357e5ecc",
+    "subject": "Account Unlock Request: user@bluepay.com",
+    "category": "Other",
+    "description": "Locked out by mistake, please unlock.",
+    "attachment": "",
+    "status": "open",
+    "priority": "high",
+    "replies": [],
+    "createdAt": "2026-09-13T15:46:28.089Z",
+    "updatedAt": "2026-09-13T15:46:28.089Z",
+    "ticketId": "BP-TKT-0002",
+    "__v": 0
+  },
+  {
+    "_id": "6abea48857fe8406c5a78a7c",
+    "userId": "6aa696df1b065edb357e5ecc",
+    "subject": "wer",
+    "category": "Payment Issue",
+    "description": "wer",
+    "attachment": "",
+    "status": "in_progress",
+    "priority": "medium",
+    "replies": [
+      {
+        "senderId": "6a7d5353331f90fa265ba503",
+        "senderRole": "admin",
+        "message": "zxxzx",
+        "createdAt": "2026-10-01T18:28:42.642Z",
+        "_id": "6abea65a5617844b1e8bdcae"
+      }
+    ],
+    "createdAt": "2026-10-01T18:20:56.650Z",
+    "updatedAt": "2026-10-01T18:28:42.660Z",
+    "ticketId": "BP-TKT-0003",
+    "__v": 1
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "6abea65e5617844b1e8bdcc8",
+    "userId": "6aa696df1b065edb357e5ecc",
+    "name": "Default Sandbox Key",
+    "key": "sk_test_3762494efbb46461844e6c04fdbd3400e4fdb36edcba2e68",
+    "clientId": "BPD213403D",
+    "env": "sandbox",
+    "permissions": "Full Access",
+    "status": "active",
+    "lastUsedAt": null,
+    "createdAt": "2026-10-01T18:28:46.854Z",
+    "updatedAt": "2026-10-01T18:28:46.854Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ac27d6c33d8e278edf0120c",
+    "userId": "6ac27d5133d8e278edf011e8",
+    "name": "Default Sandbox Key",
+    "key": "sk_test_04de0eb579e18dba6b13385226b97906e6c3f6ea0089afce",
+    "clientId": "BP177A0DB8",
+    "env": "sandbox",
+    "permissions": "Full Access",
+    "status": "active",
+    "lastUsedAt": null,
+    "createdAt": "2026-10-04T16:23:08.426Z",
+    "updatedAt": "2026-10-04T16:23:08.426Z",
+    "__v": 0
+  }
+]

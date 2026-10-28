@@ -1,0 +1,203 @@
+{
+  "info": {
+    "name": "Kotak CMS Generic Payments - UAT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Variables: base_url, token_url, client_id, client_secret, api_key (not required by the kit for /v1/cms/pay), access_token, encrypted_body. Body of 02/03 must be the BASE64 AES ciphertext produced by: node scripts/kotakUatTest.js sample (prints it) - Postman cannot encrypt without the pre-request script below."
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://apigwuat.kotak.com:8443"
+    },
+    {
+      "key": "token_url",
+      "value": "{{base_url}}/auth/oauth/v2/token"
+    },
+    {
+      "key": "client_id",
+      "value": ""
+    },
+    {
+      "key": "client_secret",
+      "value": ""
+    },
+    {
+      "key": "api_key",
+      "value": ""
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    },
+    {
+      "key": "payment_xml",
+      "value": ""
+    },
+    {
+      "key": "status_xml",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - OAuth Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const j = pm.response.json();",
+              "pm.environment.set(\"access_token\", j.access_token);",
+              "pm.collectionVariables.set(\"access_token\", j.access_token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials"
+            },
+            {
+              "key": "client_id",
+              "value": "{{client_id}}"
+            },
+            {
+              "key": "client_secret",
+              "value": "{{client_secret}}"
+            }
+          ]
+        },
+        "url": "{{token_url}}"
+      }
+    },
+    {
+      "name": "02 - Payment Request",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// Encrypts {{payment_xml}} exactly like Kotak AESCBCPKCS5Encryption: AES-CBC/PKCS7, key=utf8(client_secret), IV=16 zero bytes, plaintext=16 zero bytes||xml, base64.",
+              "const CryptoJS = require(\"crypto-js\");",
+              "const key = CryptoJS.enc.Utf8.parse(pm.variables.get(\"client_secret\"));",
+              "const iv = CryptoJS.enc.Hex.parse(\"00000000000000000000000000000000\");",
+              "const xml = pm.variables.get(\"payment_xml\");",
+              "const plain = CryptoJS.enc.Hex.parse(\"00000000000000000000000000000000\").concat(CryptoJS.enc.Utf8.parse(xml));",
+              "pm.variables.set(\"encrypted_body\", CryptoJS.AES.encrypt(plain, key, {iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7}).ciphertext.toString(CryptoJS.enc.Base64));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "SOAPAction",
+            "value": "\"/BusinessServices/StarterProcesses/CMS_Generic_Service.serviceagent/Payment\""
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/xml"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{encrypted_body}}",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": "{{base_url}}/v1/cms/pay"
+      }
+    },
+    {
+      "name": "03 - Payment Status",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const CryptoJS = require(\"crypto-js\");",
+              "const key = CryptoJS.enc.Utf8.parse(pm.variables.get(\"client_secret\"));",
+              "const z = CryptoJS.enc.Hex.parse(\"00000000000000000000000000000000\");",
+              "const plain = z.clone().concat(CryptoJS.enc.Utf8.parse(pm.variables.get(\"status_xml\")));",
+              "pm.variables.set(\"encrypted_status_body\", CryptoJS.AES.encrypt(plain, key, {iv: z, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7}).ciphertext.toString(CryptoJS.enc.Base64));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "SOAPAction",
+            "value": "\"/BusinessServices/StarterProcesses/CMS_Generic_Service.serviceagent/Reversal\""
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/xml"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{encrypted_status_body}}",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": "{{base_url}}/v1/cms/rev"
+      }
+    },
+    {
+      "name": "04 - Response Decryption test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Kotak responses are base64: first 16 bytes = IV, rest = AES-CBC/PKCS7 ciphertext, key=utf8(client_secret).",
+              "const CryptoJS = require(\"crypto-js\");",
+              "const raw = CryptoJS.enc.Base64.parse(pm.response.text().trim());",
+              "const hex = raw.toString(CryptoJS.enc.Hex);",
+              "const iv = CryptoJS.enc.Hex.parse(hex.slice(0,32));",
+              "const ct = CryptoJS.enc.Hex.parse(hex.slice(32));",
+              "const key = CryptoJS.enc.Utf8.parse(pm.variables.get(\"client_secret\"));",
+              "const dec = CryptoJS.AES.decrypt({ciphertext: ct}, key, {iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7}).toString(CryptoJS.enc.Utf8);",
+              "console.log(dec);",
+              "pm.test(\"decrypts to XML\", () => pm.expect(dec).to.include(\"Envelope\"));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "description": "Re-send request 02 (or 03) and run this tab logic, or paste it into the Tests tab of 02/03.",
+        "header": [],
+        "url": "{{base_url}}/v1/cms/pay"
+      }
+    }
+  ]
+}

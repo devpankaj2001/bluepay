@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "6abd3ff957fe8406c5a78643",
+    "full_name": "Amit Kumar",
+    "is_business_registered": "Yes",
+    "email": "amit.kumar99@example.com",
+    "company_name": "Kumar Tech Labs",
+    "mobile_number": "9876500001",
+    "website": "https://kumartech.in",
+    "reason": "Need merchant payout APIs for vendor settlements",
+    "status": "approved",
+    "createdUserId": "6abd406a57fe8406c5a78666",
+    "adminRemarks": "Account created by Admin on 30/9/2026",
+    "createdAt": "2026-09-30T16:59:37.574Z",
+    "updatedAt": "2026-09-30T17:01:31.146Z",
+    "__v": 0
+  },
+  {
+    "_id": "6abd409d57fe8406c5a78686",
+    "full_name": "nikhil",
+    "is_business_registered": "No",
+    "email": "amifgtj05@gmail.com",
+    "company_name": "sdf",
+    "mobile_number": "fg64564546564",
+    "website": "http://localhost:5173/signup",
+    "reason": "dfg",
+    "status": "rejected",
+    "createdUserId": null,
+    "adminRemarks": "noo",
+    "createdAt": "2026-09-30T17:02:21.479Z",
+    "updatedAt": "2026-09-30T17:03:54.893Z",
+    "__v": 0
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "6a8fa19763f6cc0103cdfc7b",
+    "name": "Rohit Singh",
+    "email": "ra73730059@gmail.com",
+    "message": "Plan Selected: Custom Estimator Quote (Estimated ₹25,960)\nDetails: Rr",
+    "createdAt": "2026-08-27T02:31:51.722Z",
+    "updatedAt": "2026-08-27T02:31:51.722Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a98fa0863f6cc0103cdfc84",
+    "name": "e",
+    "email": "sample@email.tst",
+    "message": "Plan Selected: Web Development (₹14,500 + GST)\nDetails:",
+    "createdAt": "2026-09-03T04:39:36.515Z",
+    "updatedAt": "2026-09-03T04:39:36.515Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa2b24863f6cc0103cdfc85",
+    "name": "Abolaji Cole",
+    "email": "bjcolevibez25@gmail.com",
+    "message": "Cloth",
+    "createdAt": "2026-09-10T13:36:08.741Z",
+    "updatedAt": "2026-09-10T13:36:08.741Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aad7e9363f6cc0103cdfc86",
+    "name": "Ashok Kumar",
+    "email": "mostakhan341@gmail.com",
+    "message": "Link send please",
+    "createdAt": "2026-09-18T18:10:27.916Z",
+    "updatedAt": "2026-09-18T18:10:27.916Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ab8bb9d63f6cc0103cdfc8d",
+    "name": "Glamour Glow",
+    "email": "glamourglow193@gmail.com",
+    "message": "Built practical digital skills through using smartphones, online platforms, typing, and learning how to create and share",
+    "createdAt": "2026-09-27T06:45:49.192Z",
+    "updatedAt": "2026-09-27T06:45:49.192Z",
+    "__v": 0
+  }
+]

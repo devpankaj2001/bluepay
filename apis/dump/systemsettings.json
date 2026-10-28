@@ -1,0 +1,27 @@
+[
+  {
+    "_id": "6a7d537d63f6cc0103cdfc7a",
+    "bank_name": "Testing bank",
+    "account_number": "464625452224544",
+    "account_type": "Current",
+    "holder_name": "Testing",
+    "ifsc_code": "UBIN0637284",
+    "upi_id": "4545454545@ybl",
+    "site_name": "BluePay",
+    "mobile_number": "5555555555",
+    "whatsapp_number": "9999999999",
+    "support_email": "",
+    "support_start_time": "09:00 AM",
+    "support_end_time": "06:00 PM",
+    "createdAt": "2026-08-13T05:17:49.980Z",
+    "updatedAt": "2026-10-07T16:44:52.576Z",
+    "__v": 0,
+    "anvineo_account_id": "API-6EF1CE97",
+    "anvineo_api_key": "ak_live_068971accde1caae87772d204e41294900d7763815e71604",
+    "anvineo_api_secret": "bc998ea0090d5d5d0cac291141976dfbb1ba1ee4de0db1be3b6b4556abf83585",
+    "anvineo_base_url": "https://api.anvineo.in/api/v1",
+    "anvineo_client_id": "CLI_DCF2D8FA550A",
+    "anvineo_environment": "live",
+    "anvineo_service_type": "instant_payout"
+  }
+]
