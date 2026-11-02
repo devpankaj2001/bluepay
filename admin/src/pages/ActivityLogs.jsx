@@ -65,6 +65,7 @@ const ActivityLogs = () => {
             setLogs(Array.isArray(data) ? data : []);
             setTotal(res.data?.total || 0);
         } catch (err) {
+            if (err?.code === 'ERR_CANCELED' || err?.name === 'CanceledError') return;
             console.error('Failed to load activity logs:', err);
             setError(err.response?.data?.msg || 'Failed to load activity logs from server.');
             setLogs([]);
